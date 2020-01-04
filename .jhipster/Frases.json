@@ -1,0 +1,25 @@
+{
+    "name": "Frases",
+    "fields": [
+        {
+            "fieldName": "descricao",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "verdadeira",
+            "fieldType": "TipoVF",
+            "fieldValues": "V,F"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200104233526",
+    "entityTableName": "frases",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

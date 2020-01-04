@@ -1,0 +1,23 @@
+{
+  "repo6App": {
+    "frases": {
+      "home": {
+        "title": "Frases",
+        "createLabel": "Criar novo Frases",
+        "createOrEditLabel": "Criar ou editar Frases",
+        "notFound": "Nenhum Frases encontrado"
+      },
+      "created": "Um novo Frases foi criado com o identificador {{ param }}",
+      "updated": "Um Frases foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Frases foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Frases {{ id }}?"
+      },
+      "detail": {
+        "title": "Frases"
+      },
+      "descricao": "Descricao",
+      "verdadeira": "Verdadeira"
+    }
+  }
+}
