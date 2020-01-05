@@ -2,7 +2,7 @@ version: '2'
 services:
   repo6-postgresql:
     image: postgres:11.6
-    # volumes:
+    volumes:
       - ~/volumes/jhipster/repo6/postgresql/:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=repo6
