@@ -2,6 +2,7 @@ package br.repo6.web.rest;
 
 import br.repo6.Repo6App;
 import br.repo6.domain.Alternativa;
+import br.repo6.domain.Frase;
 import br.repo6.repository.AlternativaRepository;
 import br.repo6.web.rest.errors.ExceptionTranslator;
 
@@ -79,6 +80,16 @@ public class AlternativaResourceIT {
     public static Alternativa createEntity(EntityManager em) {
         Alternativa alternativa = new Alternativa()
             .ordem(DEFAULT_ORDEM);
+        // Add required entity
+        Frase frase;
+        if (TestUtil.findAll(em, Frase.class).isEmpty()) {
+            frase = FraseResourceIT.createEntity(em);
+            em.persist(frase);
+            em.flush();
+        } else {
+            frase = TestUtil.findAll(em, Frase.class).get(0);
+        }
+        alternativa.getListaFrases().add(frase);
         return alternativa;
     }
     /**
@@ -90,6 +101,16 @@ public class AlternativaResourceIT {
     public static Alternativa createUpdatedEntity(EntityManager em) {
         Alternativa alternativa = new Alternativa()
             .ordem(UPDATED_ORDEM);
+        // Add required entity
+        Frase frase;
+        if (TestUtil.findAll(em, Frase.class).isEmpty()) {
+            frase = FraseResourceIT.createUpdatedEntity(em);
+            em.persist(frase);
+            em.flush();
+        } else {
+            frase = TestUtil.findAll(em, Frase.class).get(0);
+        }
+        alternativa.getListaFrases().add(frase);
         return alternativa;
     }
 

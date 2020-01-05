@@ -20,12 +20,6 @@
                                  referencedColumnNames="id"
                                  referencedTableName="pergunta"/>
 
-        <addForeignKeyConstraint baseColumnNames="lista_alternativa_id"
-                                 baseTableName="questao"
-                                 constraintName="fk_questao_lista_alternativa_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="alternativa"/>
-
         <addForeignKeyConstraint baseColumnNames="prova_id"
                                  baseTableName="questao"
                                  constraintName="fk_questao_prova_id"

@@ -22,7 +22,6 @@
             <th scope="col" ><span jhiTranslate="repo6App.questao.ordem">Ordem</span></th>
             <th scope="col" ><span jhiTranslate="repo6App.questao.enunciado">Enunciado</span></th>
             <th scope="col" ><span jhiTranslate="repo6App.questao.pergunta">Pergunta</span></th>
-            <th scope="col" ><span jhiTranslate="repo6App.questao.listaAlternativa">Lista Alternativa</span></th>
             <th scope="col" ><span jhiTranslate="repo6App.questao.prova">Prova</span></th>
             <th scope="col"></th>
             </tr>
@@ -39,11 +38,6 @@
                 <td>
                     <div *ngIf="questao.pergunta">
                         <a [routerLink]="['/pergunta', questao.pergunta?.id, 'view' ]" >{{questao.pergunta?.descricao}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="questao.listaAlternativa">
-                        <a [routerLink]="['/alternativa', questao.listaAlternativa?.id, 'view' ]" >{{questao.listaAlternativa?.id}}</a>
                     </div>
                 </td>
                 <td>

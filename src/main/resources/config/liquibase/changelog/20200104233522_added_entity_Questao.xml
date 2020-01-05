@@ -24,9 +24,6 @@
             <column name="pergunta_id" type="bigint">
                 <constraints unique="true" nullable="false" uniqueConstraintName="ux_questao_pergunta_id" />
             </column>
-            <column name="lista_alternativa_id" type="bigint">
-                <constraints unique="true" nullable="false" uniqueConstraintName="ux_questao_lista_alternativa_id" />
-            </column>
             <column name="prova_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -56,7 +53,6 @@
             <column name="ordem" type="numeric"/>
             <column name="enunciado_id" type="numeric"/>
             <column name="pergunta_id" type="numeric"/>
-            <column name="lista_alternativa_id" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

@@ -21,12 +21,6 @@
                         <a [routerLink]="['/pergunta', questao.pergunta?.id, 'view']">{{questao.pergunta?.descricao}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="repo6App.questao.listaAlternativa">Lista Alternativa</span></dt>
-                <dd>
-                    <div *ngIf="questao.listaAlternativa">
-                        <a [routerLink]="['/alternativa', questao.listaAlternativa?.id, 'view']">{{questao.listaAlternativa?.id}}</a>
-                    </div>
-                </dd>
                 <dt><span jhiTranslate="repo6App.questao.prova">Prova</span></dt>
                 <dd>
                     <div *ngIf="questao.prova">

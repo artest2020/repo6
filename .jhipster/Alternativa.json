@@ -6,7 +6,22 @@
             "fieldType": "Integer"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "frase",
+            "otherEntityRelationshipName": "alternativa",
+            "relationshipValidateRules": "required",
+            "relationshipName": "listaFrase"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "questao",
+            "otherEntityRelationshipName": "listaAlternativa",
+            "relationshipName": "questao",
+            "otherEntityField": "id"
+        }
+    ],
     "changelogDate": "20200104233525",
     "entityTableName": "alternativa",
     "dto": "no",

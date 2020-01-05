@@ -1,8 +1,12 @@
 package br.repo6.domain;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A Alternativa.
@@ -20,6 +24,13 @@ public class Alternativa implements Serializable {
 
     @Column(name = "ordem")
     private Integer ordem;
+
+    @OneToMany(mappedBy = "alternativa")
+    private Set<Frase> listaFrases = new HashSet<>();
+
+    @ManyToOne
+    @JsonIgnoreProperties("listaAlternativas")
+    private Questao questao;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -41,6 +52,44 @@ public class Alternativa implements Serializable {
 
     public void setOrdem(Integer ordem) {
         this.ordem = ordem;
+    }
+
+    public Set<Frase> getListaFrases() {
+        return listaFrases;
+    }
+
+    public Alternativa listaFrases(Set<Frase> frases) {
+        this.listaFrases = frases;
+        return this;
+    }
+
+    public Alternativa addListaFrase(Frase frase) {
+        this.listaFrases.add(frase);
+        frase.setAlternativa(this);
+        return this;
+    }
+
+    public Alternativa removeListaFrase(Frase frase) {
+        this.listaFrases.remove(frase);
+        frase.setAlternativa(null);
+        return this;
+    }
+
+    public void setListaFrases(Set<Frase> frases) {
+        this.listaFrases = frases;
+    }
+
+    public Questao getQuestao() {
+        return questao;
+    }
+
+    public Alternativa questao(Questao questao) {
+        this.questao = questao;
+        return this;
+    }
+
+    public void setQuestao(Questao questao) {
+        this.questao = questao;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

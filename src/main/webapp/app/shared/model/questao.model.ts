@@ -8,7 +8,7 @@ export interface IQuestao {
   ordem?: number;
   enunciado?: IEnunciado;
   pergunta?: IPergunta;
-  listaAlternativa?: IAlternativa;
+  listaAlternativas?: IAlternativa[];
   prova?: IProva;
 }
 
@@ -18,7 +18,7 @@ export class Questao implements IQuestao {
     public ordem?: number,
     public enunciado?: IEnunciado,
     public pergunta?: IPergunta,
-    public listaAlternativa?: IAlternativa,
+    public listaAlternativas?: IAlternativa[],
     public prova?: IProva
   ) {}
 }

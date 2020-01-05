@@ -93,6 +93,12 @@
                             <span jhiTranslate="global.menu.entities.resolucaoQuestao">Resolucao Questao</span>
                         </a>
                     </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="frase" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.frase">Frase</span>
+                        </a>
+                    </li>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </ul>
             </li>

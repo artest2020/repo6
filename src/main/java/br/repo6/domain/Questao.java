@@ -5,6 +5,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A Questao.
@@ -33,10 +35,8 @@ public class Questao implements Serializable {
     @JoinColumn(unique = true)
     private Pergunta pergunta;
 
-    @OneToOne(optional = false)
-    @NotNull
-    @JoinColumn(unique = true)
-    private Alternativa listaAlternativa;
+    @OneToMany(mappedBy = "questao")
+    private Set<Alternativa> listaAlternativas = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties("listaQuestaos")
@@ -90,17 +90,29 @@ public class Questao implements Serializable {
         this.pergunta = pergunta;
     }
 
-    public Alternativa getListaAlternativa() {
-        return listaAlternativa;
+    public Set<Alternativa> getListaAlternativas() {
+        return listaAlternativas;
     }
 
-    public Questao listaAlternativa(Alternativa alternativa) {
-        this.listaAlternativa = alternativa;
+    public Questao listaAlternativas(Set<Alternativa> alternativas) {
+        this.listaAlternativas = alternativas;
         return this;
     }
 
-    public void setListaAlternativa(Alternativa alternativa) {
-        this.listaAlternativa = alternativa;
+    public Questao addListaAlternativa(Alternativa alternativa) {
+        this.listaAlternativas.add(alternativa);
+        alternativa.setQuestao(this);
+        return this;
+    }
+
+    public Questao removeListaAlternativa(Alternativa alternativa) {
+        this.listaAlternativas.remove(alternativa);
+        alternativa.setQuestao(null);
+        return this;
+    }
+
+    public void setListaAlternativas(Set<Alternativa> alternativas) {
+        this.listaAlternativas = alternativas;
     }
 
     public Prova getProva() {

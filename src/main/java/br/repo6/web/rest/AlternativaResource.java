@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional; 
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -48,7 +49,7 @@ public class AlternativaResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/alternativas")
-    public ResponseEntity<Alternativa> createAlternativa(@RequestBody Alternativa alternativa) throws URISyntaxException {
+    public ResponseEntity<Alternativa> createAlternativa(@Valid @RequestBody Alternativa alternativa) throws URISyntaxException {
         log.debug("REST request to save Alternativa : {}", alternativa);
         if (alternativa.getId() != null) {
             throw new BadRequestAlertException("A new alternativa cannot already have an ID", ENTITY_NAME, "idexists");
@@ -69,7 +70,7 @@ public class AlternativaResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/alternativas")
-    public ResponseEntity<Alternativa> updateAlternativa(@RequestBody Alternativa alternativa) throws URISyntaxException {
+    public ResponseEntity<Alternativa> updateAlternativa(@Valid @RequestBody Alternativa alternativa) throws URISyntaxException {
         log.debug("REST request to update Alternativa : {}", alternativa);
         if (alternativa.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

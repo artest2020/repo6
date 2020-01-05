@@ -16,7 +16,9 @@
       "detail": {
         "title": "Alternativa"
       },
-      "ordem": "Ordem"
+      "ordem": "Ordem",
+      "listaFrase": "Lista Frase",
+      "questao": "Questao"
     }
   }
 }

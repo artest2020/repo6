@@ -42,19 +42,6 @@
                     </small>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="repo6App.questao.listaAlternativa" for="field_listaAlternativa">Lista Alternativa</label>
-                    <select class="form-control" id="field_listaAlternativa" name="listaAlternativa" formControlName="listaAlternativa">
-                        <option *ngIf="!editForm.get('listaAlternativa')!.value" [ngValue]="null" selected></option>
-                        <option [ngValue]="alternativaOption.id === editForm.get('listaAlternativa')!.value?.id ? editForm.get('listaAlternativa')!.value : alternativaOption" *ngFor="let alternativaOption of listaalternativas; trackBy: trackById">{{alternativaOption.id}}</option>
-                    </select>
-                </div>
-                <div *ngIf="editForm.get('listaAlternativa')!.invalid && (editForm.get('listaAlternativa')!.dirty || editForm.get('listaAlternativa')!.touched)">
-                    <small class="form-text text-danger"
-                           *ngIf="editForm.get('listaAlternativa')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                    </small>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="repo6App.questao.prova" for="field_prova">Prova</label>
                     <select class="form-control" id="field_prova" name="prova" formControlName="prova">
                         <option [ngValue]="null"></option>

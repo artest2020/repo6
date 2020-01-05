@@ -111,7 +111,7 @@ public class QuestaoResourceIT {
         } else {
             alternativa = TestUtil.findAll(em, Alternativa.class).get(0);
         }
-        questao.setListaAlternativa(alternativa);
+        questao.getListaAlternativas().add(alternativa);
         return questao;
     }
     /**
@@ -152,7 +152,7 @@ public class QuestaoResourceIT {
         } else {
             alternativa = TestUtil.findAll(em, Alternativa.class).get(0);
         }
-        questao.setListaAlternativa(alternativa);
+        questao.getListaAlternativas().add(alternativa);
         return questao;
     }
 

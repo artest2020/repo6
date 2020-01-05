@@ -4,9 +4,12 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { IAlternativa, Alternativa } from 'app/shared/model/alternativa.model';
 import { AlternativaService } from './alternativa.service';
+import { IQuestao } from 'app/shared/model/questao.model';
+import { QuestaoService } from 'app/entities/questao/questao.service';
 
 @Component({
   selector: 'jhi-alternativa-update',
@@ -15,23 +18,41 @@ import { AlternativaService } from './alternativa.service';
 export class AlternativaUpdateComponent implements OnInit {
   isSaving = false;
 
+  questaos: IQuestao[] = [];
+
   editForm = this.fb.group({
     id: [],
-    ordem: []
+    ordem: [],
+    questao: []
   });
 
-  constructor(protected alternativaService: AlternativaService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected alternativaService: AlternativaService,
+    protected questaoService: QuestaoService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ alternativa }) => {
       this.updateForm(alternativa);
+
+      this.questaoService
+        .query()
+        .pipe(
+          map((res: HttpResponse<IQuestao[]>) => {
+            return res.body ? res.body : [];
+          })
+        )
+        .subscribe((resBody: IQuestao[]) => (this.questaos = resBody));
     });
   }
 
   updateForm(alternativa: IAlternativa): void {
     this.editForm.patchValue({
       id: alternativa.id,
-      ordem: alternativa.ordem
+      ordem: alternativa.ordem,
+      questao: alternativa.questao
     });
   }
 
@@ -53,7 +74,8 @@ export class AlternativaUpdateComponent implements OnInit {
     return {
       ...new Alternativa(),
       id: this.editForm.get(['id'])!.value,
-      ordem: this.editForm.get(['ordem'])!.value
+      ordem: this.editForm.get(['ordem'])!.value,
+      questao: this.editForm.get(['questao'])!.value
     };
   }
 
@@ -71,5 +93,9 @@ export class AlternativaUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IQuestao): any {
+    return item.id;
   }
 }
